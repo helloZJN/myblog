@@ -32,7 +32,7 @@ public class BlogController {
     @GetMapping("/blogs")
     public String blogs(@RequestParam(defaultValue = "1") Integer page,
                         Model model) {
-        Page<Blog> blogPage = blogService.listBlog(page, 10);
+        Page<Blog> blogPage = blogService.listBlog(page, 10, 0);
 
         List<Type> typeList = typeService.listType(1, 1000).getRecords();
         Map<Long, String> collect = typeList.stream().collect(

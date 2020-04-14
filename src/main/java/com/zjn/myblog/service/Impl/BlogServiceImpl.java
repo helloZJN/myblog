@@ -41,9 +41,12 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Page<Blog> listBlog(Integer pageNum, Integer pageSize) {
+    public Page<Blog> listBlog(Integer pageNum, Integer pageSize, Integer isIndex) {
         QueryWrapper<Blog> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc("id");
+        if (isIndex == 1) {
+            queryWrapper.eq("published", true);
+        }
 
         Page<Blog> page = blogMapper.selectPage(new Page<Blog>(pageNum, pageSize), queryWrapper);
         PagePlus<Blog> pagePlus = new PagePlus<>();
@@ -61,6 +64,10 @@ public class BlogServiceImpl implements BlogService {
         blog.setUpdateTime(new Date());
         Type type = typeMapper.selectById(blog.getTypeId());
         blog.setTypeName(type.getName());
+        blogMapper.updateById(blog);
+    }
+
+    public void updateViews(Blog blog) {
         blogMapper.updateById(blog);
     }
 

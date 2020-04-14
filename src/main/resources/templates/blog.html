@@ -495,19 +495,12 @@ h5,h6{font-size:1em;}
     <div class="ui vertical icon buttons ">
         <button type="button" class="ui toc teal button">目录</button>
         <a href="#comment-container" class="ui teal button">留言</a>
-        <button class="ui wechat icon button"><i class="weixin icon"></i></button>
         <div id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></div>
     </div>
 </div>
 
 <div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
-    <ol class="js-toc">
-
-    </ol>
-</div>
-
-<div id="qrcode" class="ui wechat-qr flowing popup transition hidden " style="width: 130px !important;">
-    <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
+    <ol class="js-toc"></ol>
 </div>
 
 
@@ -523,7 +516,6 @@ h5,h6{font-size:1em;}
 
 <script src="../static/lib/prism/prism.js"></script>
 <script src="../static/lib/tocbot/tocbot.min.js"></script>
-<script src="../static/lib/qrcode/qrcode.min.js"></script>
 <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
 <!--/*/</th:block>/*/-->
 
@@ -558,17 +550,6 @@ h5,h6{font-size:1em;}
     $('.wechat').popup({
         popup: $('.wechat-qr'),
         position: 'left center'
-    });
-
-    var serurl = /*[[#{blog.serurl}]]*/"127.0.0.1:8080";
-    var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
-    var qrcode = new QRCode("qrcode", {
-        text: serurl + url,
-        width: 110,
-        height: 110,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
     });
 
     $('#toTop-button').click(function () {
@@ -636,7 +617,7 @@ h5,h6{font-size:1em;}
     function postData() {
         $("#comment-container").load(/*[[@{/comments}]]*/"", {
             "parentComment.id": $("[name='parentComment.id']").val(),
-            "blog.id": $("[name='blog.id']").val(),
+            "blogId": $("[name='blog.id']").val(),
             "nickname": $("[name='nickname']").val(),
             "email": $("[name='email']").val(),
             "content": $("[name='content']").val()

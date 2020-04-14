@@ -14,10 +14,10 @@ import java.util.Date;
 public class Comment {
     @TableId(type = IdType.AUTO)
     private Long id;
+
     private String nickname;
     private String email;
     private String content;
-    private String avatar;
     private Date createTime;
     private Long blogId;
 

@@ -54,6 +54,23 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
+        <!--markdown-->
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark-ext-gfm-tables</artifactId>
+            <version>0.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark-ext-heading-anchor</artifactId>
+            <version>0.14.0</version>
+        </dependency>
+
         <!--spring boot 测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

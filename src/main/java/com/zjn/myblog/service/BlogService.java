@@ -8,9 +8,11 @@ public interface BlogService {
 
     Blog getBlog(Long id);
 
-    Page<Blog> listBlog(Integer pageNum, Integer pageSize);
+    Page<Blog> listBlog(Integer pageNum, Integer pageSize, Integer isIndex);
 
     void updateBlog(Blog blog);
+
+    void updateViews(Blog blog);
 
     void deleteBlog(Long id);
 }

@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 public class Type {
     @TableId(type = IdType.AUTO)
     private Long id;
+
     @NotBlank(message = "分类名称不能为空")
     private String name;
 }
