@@ -10,6 +10,8 @@ public interface BlogService {
 
     Page<Blog> listBlog(Integer pageNum, Integer pageSize, Integer isIndex);
 
+    Page<Blog> listBlogByTypeId(Integer pageNum, Integer pageSize, Long typeId);
+
     void updateBlog(Blog blog);
 
     void updateViews(Blog blog);

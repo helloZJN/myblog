@@ -55,6 +55,19 @@ public class BlogServiceImpl implements BlogService {
         return pagePlus;
     }
 
+    @Override
+    public Page<Blog> listBlogByTypeId(Integer pageNum, Integer pageSize, Long typeId) {
+        QueryWrapper<Blog> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("id");
+        queryWrapper.eq("published", true).eq("type_id", typeId);
+
+        Page<Blog> page = blogMapper.selectPage(new Page<Blog>(pageNum, pageSize), queryWrapper);
+        PagePlus<Blog> pagePlus = new PagePlus<>();
+        BeanUtils.copyProperties(page, pagePlus);
+        pagePlus.pageCount = (page.getTotal() + page.getSize() - 1) / page.getSize();
+        return pagePlus;
+    }
+
     public class PagePlus<T> extends Page<T> {
         public long pageCount;
     }
